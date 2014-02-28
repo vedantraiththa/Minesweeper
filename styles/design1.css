@@ -1,0 +1,156 @@
+﻿.block .mine .zero .explodedMine .unexplodedMine
+{
+    width: 50px;
+    height: 50px;
+    font-size: 10px;
+    background-color: #E2E2E2;
+}
+
+.mine
+{
+    /*background-color: Red;*/
+}
+
+.zero
+{
+    /*background-color: Blue;*/
+}
+
+.explodedMine
+{
+    background: Red url("../images/bomb.png") no-repeat center;
+}
+
+.unexplodedMine
+{
+    background: Black url("../images/unexplodedbomb.png") no-repeat center;
+}
+
+table
+{
+    border: 1px solid black;
+}
+
+.label
+{
+    float: left;
+    text-align: right;
+    width: 250px;
+    margin: 5px;
+}
+
+.inputbutton
+{
+    float: left;
+    margin:5px;
+}
+
+.row
+{
+}
+
+#settings
+{
+    border: 2px solid black;
+}
+
+.tempelategame *
+{
+    width: 200px;
+    margin-left:240px;
+}
+
+body
+{
+    background-color: #00BFFF;
+}
+
+input[type=button]
+{
+    font-family: cursive;
+    text-align: center;
+    font-size: medium;
+}
+
+td *
+{
+    width: 50px;
+    height: 50px;
+    background-image: url("../images/blank.gif");
+}
+
+#mineField
+{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.flag
+{
+    background: url("../images/flag.png") no-repeat #E2E2E2 center;
+    -moz-border-radius: 3px;
+    border:1px solid #ccc;
+}
+
+.doubt
+{
+    background: #E2E2E2 url("../images/qmark.png") no-repeat center;
+    -moz-border-radius: 3px;
+    border:1px solid #ccc;
+}
+
+.gameOptions
+{
+    float: left;
+}
+
+.game
+{
+    float: left;
+    margin-left: 10px;
+}
+
+.class0
+{
+    background: url('../images/0.gif') no-repeat center;
+}
+
+.class1
+{
+    background: url('../images/1.gif') no-repeat center;
+}
+
+.class2
+{
+    background: url('../images/2.gif') no-repeat center;
+}
+
+.class3
+{
+    background: url('../images/3.gif') no-repeat center;
+}
+
+.class4
+{
+    background: url('../images/4.gif') no-repeat center;
+}
+
+.class5
+{
+    background: url('../images/5.gif') no-repeat center;
+}
+
+.class6
+{
+    background: url('../images/6.gif') no-repeat center;
+}
+
+.class7
+{
+    background: url('../images/7.gif') no-repeat center;
+}
+
+.class8
+{
+    background: url('../images/8.gif') no-repeat center;
+}

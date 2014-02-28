@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>M!ne M!ne M!ne</title>
+    <script src="script/JQuery-1.6.2.js" type="text/javascript"></script>
+    <script src="script/jquery.blockUI.js" type="text/javascript"></script>
+    <script src="script/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="script/jquery.ui.mouse.js" type="text/javascript"></script>
+    <script src="script/jquery.ui.core.js" type="text/javascript"></script>
+    <script src="script/jquery.ui.draggable.js" type="text/javascript"></script>
+    <script src="script/jquery.alerts.js" type="text/javascript"></script>
+    <link href="styles/jquery.alerts.css" rel="stylesheet" type="text/css" />
+    <script src="script/MineJQ1.js" type="text/javascript"></script>
+    <link href="styles/design1.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="gameOptions">
+        <div>
+            <fieldset id="settings">
+            <legend>Create Your Own Game</legend>
+                <div id="iprows" class="row">
+                    <div class="label">
+                        <label>
+                            Enter No. Of Rows</label></div>
+                    <div class="inputbutton">
+                        <input type="text" id="txtRows" class="disable" /></div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div id="ipcols" class="row">
+                    <div class="label">
+                        <label>
+                            Enter No. Of Columns</label></div>
+                    <div class="inputbutton">
+                        <input type="text" id="txtCols" class="disable" /></div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div id="ipmines" class="row">
+                    <div class="label">
+                        <label>
+                            Enter No. Of Mines</label></div>
+                    <div class="inputbutton">
+                        <input type="text" id="txtMines" class="disable" /></div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label">
+                    </div>
+                    <div class="inputbutton">
+                        <input type="button" id="btnCustomGame" value="Start Custom Game" class="disable" /></div>
+                    <div style="clear: both">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    <div id="stats">
+        <div id="bestScores" class="row">
+            <div class="label">
+                <label>
+                    Best Time</label></div>
+            <div class="inputbutton">
+                <input type="text" id="txtBestTime" disabled="disabled" class="readonly" /></div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <div id="totalGames" class="row">
+            <div class="label">
+                <label>
+                    No. Of Games</label></div>
+            <div class="inputbutton">
+                <input type="text" id="txtTotalGames" value="0" disabled="disabled" class="readonly" /></div>
+            <div style="clear: both">
+            </div>
+        </div>
+        <div id="wonGames" class="row">
+            <div class="label">
+                <label>
+                    No. Of Games Won</label></div>
+            <div class="inputbutton">
+                <input type="text" id="txtWon" value="0" disabled="disabled" class="readonly" /></div>
+            <div style="clear: both">
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="easy" class="tempelategame">
+            <input type="button" id="btnEasy" value="Start an Easy Game" class="disable" /></div>
+        <div id="medium" class="tempelategame">
+            <input type="button" id="btnMedium" value="Start an Medium Game" class="disable" /></div>
+        <div id="hard" class="tempelategame">
+            <input type="button" id="btnHard" value="Start an Hard Game" class="disable" /></div>
+    </div>
+    <div id="replay" class="row">
+        <div class="inputbutton">
+            <input type="button" id="btnReplay" value="Replay Previous Game" class="disable" /></div>
+    </div>
+    </div>
+    <div class="game">
+        <div id="timerbase">
+        </div>
+        <div id="minebase">
+        </div>
+    </div>
+</body>
+</html>
