@@ -1,4 +1,16 @@
 ﻿/// <reference path="JQuery-1.6.2-vsdoc.js" />
+
+/**
+ * Minesweeper is a single-player video game. The object of the game is to clear an 
+ * abstract minefield without detonating a mine.
+ * You can flag a mine by right click. When in a doubt you can mark the cell as unsure
+ * by right clicking again.
+ * You can also review your past games.
+ * Enjoy!!!
+ *
+ * @author: Vedant Raiththa (email: vedantraiththa@gmail.com)
+ * 
+ */
 $(document).ready(function () {
 
     var mine = {};
@@ -9,12 +21,20 @@ $(document).ready(function () {
 
     mine.positionOfMines = [];
 
+	/**
+	 * Player Move object
+	 *
+	 */
     mine.move = function (currentTime, currentClickEvent, currentBlock) {
         this.time = (+currentTime.substring(0, 2) * 60) + (+currentTime.substring(3, 5));
         this.click = currentClickEvent;
         this.block = currentBlock;
     };
 
+	/**
+	 * Game object
+	 *
+	 */
     mine.game = function (id, rows, columns, positionOfMines) {
         this.gameId = id;
         this.col = columns;
@@ -24,8 +44,16 @@ $(document).ready(function () {
         this.rerun = false;
     };
 
+	/**
+	 * Previous games
+	 *
+	 */
     mine.savedData = [];
 
+	/**
+	 * Replays a previously stored game
+	 *
+	 */
     mine.replayGame = function (savedDataId) {
         var replayingGame = mine.savedData[savedDataId],
         i;
@@ -59,11 +87,18 @@ $(document).ready(function () {
         }, replayingGame.moves[replayingGame.moves.length - 1].time * 1000);
     };
 
+	/**
+	 * save a move to the current game
+	 *
+	 */
     mine.saveMove = function (e) {
         mine.currentGame.moves.push(new mine.move($("#timer").val(), e.type, e.target.id));
     };
 
-    // set methods for variables
+    /**
+	 * Game over
+	 *
+	 */
     mine.setGG = function () {
         mine.GG = true;
         if (!mine.currentGame.rerun) {
@@ -89,24 +124,38 @@ $(document).ready(function () {
         }
     };
 
+	/**
+	 * Record no of games played
+	 *
+	 */
     mine.setnoOfGames = function () {
         if (!mine.currentGame.rerun) {
             $("#txtTotalGames").val(mine.noOfGames = mine.noOfGames + 1);
         }
     };
 
+	/**
+	 * Record no of games won
+	 *
+	 */
     mine.setnoOfGamesWon = function () {
         if (!mine.currentGame.rerun) {
             $("#txtWon").val(mine.noOfGamesWon = mine.noOfGamesWon + 1);
         }
     };
 
-    // default values
+    /**
+	 * Default values
+	 *
+	 */
     mine.cols = 10;
     mine.rows = 5;
     mine.mines = 10;
 
-    // Best Time
+	/**
+	 * Best time
+	 *
+	 */
     mine.BestTimeMin = 59;
     mine.BestTimeSec = 59;
     mine.setBestTime = function (min, sec) {
@@ -119,7 +168,10 @@ $(document).ready(function () {
         }
     };
 
-    // Timer function
+    /**
+	 * Timer functions
+	 *
+	 */
     mine.updateTime = function () {
         if (!mine.GG) {
             mine.currentTime = mine.timerElapsed();
@@ -139,8 +191,11 @@ $(document).ready(function () {
         return (new Date().getTime() - mine.startTime);
     };
 
-
-    // Where the fun begins....
+	/**
+	 * Where the fun begins....
+	 * Initialize field
+	 *
+	 */
     mine.createMineField = function () {
         mine.positionOfMines = [];
 
@@ -178,7 +233,6 @@ $(document).ready(function () {
             }
         }
     };
-
 
     mine.placeMines = function () {
         var i;
@@ -226,6 +280,10 @@ $(document).ready(function () {
         }
     };
 
+    /**
+	 * Open a cell
+	 *
+	 */
     mine.flip = function (blockId) {
         var block = $("#" + blockId),
         id = blockId.substring(5).split("-"),
@@ -291,7 +349,11 @@ $(document).ready(function () {
         }
     };
 
-    // entry point...
+    /**
+	 * Where it all began..
+	 * Start the game
+	 *
+	 */
     mine.startGame = (function () {
         $("#btnCustomGame").click(function () {
             if (!((isNaN($("#txtRows").val()) && $("#txtRows").val() === "0") && (isNaN($("#txtCols").val()) && $("#txtRows").val() === "0") && (isNaN($("#txtMines").val()) && $("#txtRows").val() === "0") && ($("#txtRows").val() * $("#txtCols").val() < (+$("#txtMines").val())))) {

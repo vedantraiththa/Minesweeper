@@ -1,5 +1,20 @@
 ﻿/// <reference path="JQuery-1.6.2-vsdoc.js" />
 
+/**
+ * Minesweeper is a single-player video game. The object of the game is to clear an 
+ * abstract minefield without detonating a mine.
+ * You can flag a mine by right click. When in a doubt you can mark the cell as unsure
+ * by right clicking again.
+ * You can also review your past games.
+ * 
+ * Developer Notes: This is a jQuery plugin. Just call the minesweeper function on the
+ *					jQuery object.
+ *
+ * Enjoy!!!
+ *
+ * @author: Vedant Raiththa (email: vedantraiththa@gmail.com)
+ * 
+ */
 (function ($) {
     $.fn.minesweeper = function (rows, columns, mines) {
         return this.each(function () {
@@ -35,8 +50,8 @@
             mine.savedData = [];
 
             mine.replayGame = function (savedDataId) {
-                var replayingGame = mine.savedData[savedDataId],
-        i;
+                var replayingGame = mine.savedData[savedDataId];
+        		var i;
                 $(".game").block();
                 $(".replayGames").attr("disabled", true);
                 $(".disable").attr("disabled", true);
@@ -51,12 +66,11 @@
                 }
                 mine.findBlockWeights();
                 mine.timerStart();
-                //console.log('length: ' + replayingGame.moves.length);
+
                 for (i = 0; i < replayingGame.moves.length; i = i + 1) {
                     (function (newi) {
                         setTimeout(function () {
                             $("#" + replayingGame.moves[newi].block).trigger(replayingGame.moves[newi].click);
-                            //console.log('newi: ' + newi);
                         }, replayingGame.moves[newi].time * 1000);
                     } (i));
                 }
@@ -156,14 +170,14 @@
 
                 mine.GG = false;
 
-                var columns = mine.cols,
-        rows = mine.rows,
-        i,
-        j,
-        html = $("<input type='text' id='timer' val()='00:00' class='timer readonly' disabled='true' />"),
-        html0,
-        html1,
-        html2;
+                var columns = mine.cols;
+                var rows = mine.rows;
+                var i;
+                var j;
+                var html = $("<input type='text' id='timer' val()='00:00' class='timer readonly' disabled='true' />");
+                var html0;
+                var html1;
+                var html2;
 
                 // insert timer
                 $("#timerbase", $(that)).append(html);
@@ -205,11 +219,11 @@
             };
 
             mine.findBlockWeights = function () {
-                var i,
-        j,
-        x,
-        y,
-        count;
+                var i;
+                var j;
+                var x;
+                var y;
+                var count;
 
                 for (i = 0; i < mine.rows; i = i + 1) {
                     for (j = 0; j < mine.cols; j = j + 1) {
@@ -235,12 +249,12 @@
             };
 
             mine.flip = function (blockId) {
-                var block = $("#" + blockId, $(that)),
-        id = blockId.substring(5).split("-"),
-        i = id[0],
-        j = id[1],
-        x,
-        y;
+                var block = $("#" + blockId, $(that));
+        		var id = blockId.substring(5).split("-");
+		        var i = id[0];
+        		var j = id[1];
+ 			    var x;
+ 			    var y;
 
                 if ((mine.GG === false) && (block.attr("class").indexOf("flag") === -1) && (block.attr("class").indexOf("doubt") === -1) && (block.attr("class").indexOf("mine") === -1)) {
                     if (block.attr("class").indexOf("flip") === -1) {
@@ -262,9 +276,9 @@
                         }
                     }
                 }
-                //        if (block.attr("class").indexOf("mine") !== -1) {
-                //            // currently do nothing.. next function will take care..
-                //        }
+// 			   if (block.attr("class").indexOf("mine") !== -1) {
+// 				   // currently do nothing.. next function will take care..
+// 			   }
             };
 
             mine.flag = function (blockId) {
@@ -299,39 +313,38 @@
                 }
             };
 
-            //            mine.easyGame = function () {
-            //                mine.createMineField();
-            //                mine.placeMines();
-            //                mine.findBlockWeights();
-            //                mine.currentGame = new mine.game(0, mine.rows, mine.cols, mine.positionOfMines);
-            //                mine.setnoOfGames();
-            //                mine.timerStart();
-            //            };
+//            mine.easyGame = function () {
+//                mine.createMineField();
+//                mine.placeMines();
+//                mine.findBlockWeights();
+//                mine.currentGame = new mine.game(0, mine.rows, mine.cols, mine.positionOfMines);
+//                mine.setnoOfGames();
+//                mine.timerStart();
+//            };
 
-            //            mine.mediumGame = function () {
-            //                mine.createMineField();
-            //                mine.placeMines();
-            //                mine.findBlockWeights();
-            //                mine.currentGame = new mine.game(0, mine.rows, mine.cols, mine.positionOfMines);
-            //                mine.setnoOfGames();
-            //                mine.timerStart();
-            //            };
+//            mine.mediumGame = function () {
+//                mine.createMineField();
+//                mine.placeMines();
+//                mine.findBlockWeights();
+//                mine.currentGame = new mine.game(0, mine.rows, mine.cols, mine.positionOfMines);
+//                mine.setnoOfGames();
+//                mine.timerStart();
+//            };
 
-            //            mine.hardGame = function () {
-            //                mine.createMineField();
-            //                mine.placeMines();
-            //                mine.findBlockWeights();
-            //                mine.currentGame = new mine.game(0, mine.rows, mine.cols, mine.positionOfMines);
-            //                mine.setnoOfGames();
-            //                mine.timerStart();
-            //            };
+//            mine.hardGame = function () {
+//                mine.createMineField();
+//                mine.placeMines();
+//                mine.findBlockWeights();
+//                mine.currentGame = new mine.game(0, mine.rows, mine.cols, mine.positionOfMines);
+//                mine.setnoOfGames();
+//                mine.timerStart();
+//            };
 
             mine.customGame = function () {
                 // initializing values
                 mine.cols = columns || 10;
                 mine.rows = rows || 5;
                 mine.mines = mines || 10;
-
 
                 if ((isNaN(mine.rows) || (mine.rows === "") || mine.rows === "0") || (isNaN(mine.cols) || (mine.cols === "") || mine.cols === "0") || (isNaN(mine.mines) || (mine.mines === "") || mine.mines === "0") || (mine.rows * mine.cols < (+mine.mines))) {
                     if ($("#customGameError", $(that)).length === 0) {
@@ -341,10 +354,9 @@
                     return;
                 }
 
-
-                //                mine.rows = $("#txtRows").val();
-                //                mine.cols = $("#txtCols").val();
-                //                mine.mines = $("#txtMines").val();
+//                 mine.rows = $("#txtRows").val();
+//                 mine.cols = $("#txtCols").val();
+//                 mine.mines = $("#txtMines").val();
                 mine.createMineField();
                 mine.placeMines();
                 mine.findBlockWeights();
@@ -356,12 +368,9 @@
 
             // entry point... (not anymore)
             mine.startGame = function () {
-
-
-
                 $("#btnReplay", $(that)).click(function () {
-                    var i,
-                html4;
+                    var i;
+                    var html4;
                     $(".disable", $(that)).attr("disabled", true);
                     $("#replay", $(that)).append($("<div id='replayGames'></div>"));
 
