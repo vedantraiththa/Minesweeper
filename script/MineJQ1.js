@@ -356,12 +356,22 @@ $(document).ready(function () {
 	 */
     mine.startGame = (function () {
         $("#btnCustomGame").click(function () {
-            if (!((isNaN($("#txtRows").val()) && $("#txtRows").val() === "0") && (isNaN($("#txtCols").val()) && $("#txtRows").val() === "0") && (isNaN($("#txtMines").val()) && $("#txtRows").val() === "0") && ($("#txtRows").val() * $("#txtCols").val() < (+$("#txtMines").val())))) {
-                if ($("#customGameError").length === 0) {
-                    $("body").append($("<div id='customGameError'><label>Please enter no. of rows, columns and mines properly</label></div>"));
-                    return;
-                }
+            if (isNaN($("#txtRows").val()) || $("#txtRows").val() === "0") {
+            	alert("Please enter no. of rows greater than 0 and within range");
+                return;
             }
+            if (isNaN($("#txtCols").val()) || $("#txtCols").val() === "0") {
+            	alert("Please enter no. of cols greater than 0 and within range");
+                return;
+            }
+            if (isNaN($("#txtMines").val()) || $("#txtMines").val() === "0") {
+            	alert("Please enter no. of mines greater than 0 and within range");
+                return;
+            }
+            if (($("#txtRows").val() * $("#txtCols").val()) <= $("#txtMines").val()) {
+            	alert("Please enter no. of mines less than total number of squares");
+                return;
+            }            
             mine.rows = $("#txtRows").val();
             mine.cols = $("#txtCols").val();
             mine.mines = $("#txtMines").val();
